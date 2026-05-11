@@ -1,4 +1,5 @@
 const myLibrary = [];
+const libraryBody = document.querySelector("#library-body");
 
 function Book(title, author, pages, read) {
   if (!new.target) {
@@ -16,9 +17,29 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(newBook);
 }
 
-function displayBooks() {}
+function displayBooks() {
+  libraryBody.innerHTML = "";
+  myLibrary.forEach((book) => {
+    const row = document.createElement("tr");
+    row.setAttribute("data-id", book.id);
 
-// addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
-// addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, true);
+    const addCell = (text) => {
+      const cell = document.createElement("td");
+      cell.textContent = text;
+      row.appendChild(cell);
+    };
 
-// console.log(myLibrary);
+    addCell(book.title);
+    addCell(book.author);
+    addCell(book.pages);
+    addCell(book.read ? "Read" : "Not Read");
+
+    libraryBody.appendChild(row);
+  });
+}
+
+addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
+addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, true);
+addBookToLibrary("1984", "George Orwell", 328, true);
+
+displayBooks();
