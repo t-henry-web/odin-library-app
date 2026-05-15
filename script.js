@@ -19,8 +19,8 @@ function Book(title, author, pages, read, bingoID, isHardMode = false) {
   this.isHardMode = isHardMode;
 }
 
-function addBookToLibrary(title, author, pages, read) {
-  const newBook = new Book(title, author, pages, read);
+function addBookToLibrary(title, author, pages, read, bingoID, isHardMode) {
+  const newBook = new Book(title, author, pages, read, bingoID, isHardMode);
   myLibrary.push(newBook);
 }
 
