@@ -1,7 +1,7 @@
 const myLibrary = [];
 const libraryBody = document.querySelector("#library-body");
 
-function Book(title, author, pages, read, bingoID, isHardMode = false) {
+function Book(title, author, pages, read, bingoCell, isHardMode = false) {
   if (!new.target) {
     throw new Error("Book must be called with the new keyword");
   }
@@ -15,12 +15,12 @@ function Book(title, author, pages, read, bingoID, isHardMode = false) {
   this.pages = pages;
 
   // Bingo Specifics
-  this.bingoID = bingoID;
+  this.bingoCell = bingoCell;
   this.isHardMode = isHardMode;
 }
 
-function addBookToLibrary(title, author, pages, read, bingoID, isHardMode) {
-  const newBook = new Book(title, author, pages, read, bingoID, isHardMode);
+function addBookToLibrary(title, author, pages, read, bingoCell, isHardMode) {
+  const newBook = new Book(title, author, pages, read, bingoCell, isHardMode);
   myLibrary.push(newBook);
 }
 
@@ -39,14 +39,21 @@ function displayBooks() {
     addCell(book.title);
     addCell(book.author);
     addCell(book.pages);
+    addCell(book.bingoCell);
+    addCell(book.isHardMode ? "Hard" : "Easy");
     addCell(book.read ? "Read" : "Not Read");
 
     libraryBody.appendChild(row);
   });
 }
 
-addBookToLibrary("The Hobbit", "J.R.R. Tolkien", 295, false);
-addBookToLibrary("To Kill a Mockingbird", "Harper Lee", 281, true);
-addBookToLibrary("1984", "George Orwell", 328, true);
+addBookToLibrary(
+  "Pilgrim",
+  "Mitchell Luthi",
+  708,
+  false,
+  "One-Word Title",
+  true,
+); // title, author, pages, read, bingoCell, isHardMode
 
 displayBooks();
