@@ -1,8 +1,11 @@
 import { bingoSquares } from "./bingo_2026.js";
 
 const myLibrary = [];
+window.myLibrary = myLibrary;
 
 const board = document.querySelector("#bingo-board");
+const addBookForm = document.querySelector("#add-book-form");
+const addBookDialog = document.querySelector("#add-book-dialog");
 
 board.addEventListener("change", (event) => {
   const target = event.target;
@@ -29,6 +32,27 @@ board.addEventListener("click", (event) => {
   const dialog = document.getElementById("add-book-dialog");
   dialog.setAttribute("data-square-id", squareId);
   dialog.showModal();
+});
+
+board.addEventListener("click", (event) => {
+  // const deleteButton = event.target.closest(".delete-book-btn");
+  // if (!deleteButton) return;
+  // const squareId = deleteButton.getAttribute("data-square-id");
+  // const bookId = deleteButton.getAttribute("data-book-id");
+});
+
+addBookForm.addEventListener("submit", (event) => {
+  event.preventDefault();
+  const formData = new FormData(addBookForm);
+  const title = formData.get("title");
+  const author = formData.get("author");
+
+  const squareId = parseInt(addBookDialog.getAttribute("data-square-id"));
+
+  addBookToLibrary(title, author, false, squareId, false);
+  addBookForm.reset();
+  addBookDialog.close();
+  constructBingoBoard();
 });
 
 function Book(title, author, read, bingoSquareId = null, hardMode = false) {
@@ -88,6 +112,9 @@ function constructBingoBoard() {
       </div>
     </div>
     <span class="book-author">by ${book.author}</span>
+    <button class="delete-book-btn" data-book-id="${book.id}" data-square-id="${square.id}">
+      Delete
+    </button>
   </div>
 `,
       )

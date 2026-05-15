@@ -104,3 +104,18 @@
 .add-book-btn:hover {
   background-color: #2980b9;
 }
+
+.delete-book-btn {
+  padding: 4px 8px;
+  font-size: 0.7rem;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  display: inline-block;
+}
+
+.delete-book-btn:hover {
+  background-color: #c0392b;
+}
