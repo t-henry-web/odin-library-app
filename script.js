@@ -41,6 +41,18 @@ function displayBooks() {
   });
 }
 
-addBookToLibrary("Pilgrim", "Mitchell Luthi", 708, false); // title, author, pages, read
+function constructBingoBoard() {
+  const board = document.querySelector("#bingo-board");
+  board.innerHTML = "";
 
+  for (let i = 1; i <= 25; i++) {
+    const square = document.createElement("div");
+    square.classList.add("bingo-card");
+    square.setAttribute("data-id", i);
+    board.appendChild(square);
+  }
+}
+
+addBookToLibrary("Pilgrim", "Mitchell Luthi", 708, false); // title, author, pages, read
+constructBingoBoard();
 displayBooks();
