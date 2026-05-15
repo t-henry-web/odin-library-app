@@ -2,7 +2,22 @@ import { bingoSquares } from "./bingo_2026.js";
 
 const myLibrary = [];
 
-// const libraryBody = document.querySelector("#library-body");
+const board = document.querySelector("#bingo-board");
+board.addEventListener("change", (event) => {
+  const target = event.target;
+  const bookEntry = target.closest(".book-entry");
+  if (!bookEntry) return;
+
+  const bookId = bookEntry.getAttribute("data-book-id");
+  const book = myLibrary.find((b) => b.id === bookId);
+  if (!book) return;
+
+  if (target.classList.contains("read-check")) {
+    book.read = target.checked;
+  } else if (target.classList.contains("hard-mode-check")) {
+    book.hardMode = target.checked;
+  }
+});
 
 function Book(title, author, read, bingoSquareId = null, hardMode = false) {
   if (!new.target) {
@@ -29,8 +44,6 @@ function addBookToLibrary(
   const newBook = new Book(title, author, read, bingoSquareId, hardMode);
   myLibrary.push(newBook);
 }
-
-// function displayBooks() {}
 
 function constructBingoBoard() {
   const board = document.querySelector("#bingo-board");
