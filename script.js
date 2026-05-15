@@ -1,15 +1,22 @@
 const myLibrary = [];
 const libraryBody = document.querySelector("#library-body");
 
-function Book(title, author, pages, read) {
+function Book(title, author, pages, read, bingoID, isHardMode = false) {
   if (!new.target) {
     throw new Error("Book must be called with the new keyword");
   }
+  // Identity & Status
+  this.id = crypto.randomUUID();
+  this.read = read;
+
+  // Metadata
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.read = read;
-  this.id = crypto.randomUUID();
+
+  // Bingo Specifics
+  this.bingoID = bingoID;
+  this.isHardMode = isHardMode;
 }
 
 function addBookToLibrary(title, author, pages, read) {
