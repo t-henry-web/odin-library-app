@@ -35,10 +35,13 @@ board.addEventListener("click", (event) => {
 });
 
 board.addEventListener("click", (event) => {
-  // const deleteButton = event.target.closest(".delete-book-btn");
-  // if (!deleteButton) return;
-  // const squareId = deleteButton.getAttribute("data-square-id");
-  // const bookId = deleteButton.getAttribute("data-book-id");
+  const deleteButton = event.target.closest(".delete-book-btn");
+  if (!deleteButton) return;
+
+  const bookId = deleteButton.getAttribute("data-book-id");
+  // console.log("Delete button clicked for book ID:", bookId);
+
+  constructBingoBoard();
 });
 
 addBookForm.addEventListener("submit", (event) => {
@@ -79,6 +82,13 @@ function addBookToLibrary(
 ) {
   const newBook = new Book(title, author, read, bingoSquareId, hardMode);
   myLibrary.push(newBook);
+}
+
+function removeBookFromLibrary(bookId) {
+  const bookIndex = myLibrary.findIndex((b) => b.id === bookId);
+  if (bookIndex !== -1) {
+    myLibrary.splice(bookIndex, 1);
+  }
 }
 
 function constructBingoBoard() {
@@ -139,5 +149,6 @@ function constructBingoBoard() {
 }
 
 addBookToLibrary("Pilgrim", "Mitchell Luthi", false, 16, true); // title, author, read, bingoSquareId, hardMode
+addBookToLibrary("The Story of Silence", "Alex Myers", false, 1, true);
+
 constructBingoBoard();
-// displayBooks();

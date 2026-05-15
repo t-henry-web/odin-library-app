@@ -72,8 +72,10 @@
 .book-status-controls {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  justify-content: center;
   flex-shrink: 0;
+  margin-left: 12px;
+  margin-right: 12px;
 }
 
 .book-status-controls label {
@@ -115,6 +117,7 @@
 
 .delete-book-btn {
   padding: 4px 8px;
+  margin: 8px;
   font-size: 0.7rem;
   background-color: #e74c3c;
   color: white;
