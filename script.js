@@ -61,16 +61,23 @@ function constructBingoBoard() {
     const booksHtml = squareBooks
       .map(
         (book) => `
-      <div class="book-entry" data-book-id="${book.id}">
-        <p><strong>${book.title}</strong> by ${book.author}</p>
+  <div class="book-entry" data-book-id="${book.id}">
+    <div class="book-header">
+      <span class="book-title">${book.title}</span>
+      <div class="book-status-controls">
         <label>
-          <input type="checkbox" class="read-check" ${book.read ? "checked" : ""}> Finished
+          <input type="checkbox" class="read-check" ${book.read ? "checked" : ""}>
+          <span>Read</span>
         </label>
         <label>
-          <input type="checkbox" class="hard-mode-check" ${book.hardMode ? "checked" : ""}> HM
+          <input type="checkbox" class="hard-mode-check" ${book.hardMode ? "checked" : ""}>
+          <span>HM</span>
         </label>
       </div>
-    `,
+    </div>
+    <span class="book-author">by ${book.author}</span>
+  </div>
+`,
       )
       .join("");
 
@@ -82,6 +89,9 @@ function constructBingoBoard() {
       <div class="card-books">
         ${booksHtml}
       </div>
+      <button class="add-book-btn" data-square-id="${square.id}">
+    Add Book
+  </button>
     `;
 
     board.appendChild(card);
