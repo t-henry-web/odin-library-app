@@ -1,4 +1,5 @@
 const myLibrary = [];
+const boardState = {}; // map to track which book object belongs to which square ID
 const libraryBody = document.querySelector("#library-body");
 
 function Book(title, author, pages, read) {
