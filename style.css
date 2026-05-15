@@ -22,7 +22,7 @@
 }
 
 .square-desc {
-  font-size: 0.75rem;
+  font-size: 0.9rem;
   color: #666;
   flex-grow: 0;
   margin-bottom: 4px;
@@ -42,13 +42,20 @@
 }
 
 .book-entry {
-  margin-bottom: 8px;
-}
-
-.book-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 8px;
+  border: 2px solid #797777;
+  padding: 4px 6px;
+  border-radius: 4px;
+}
+
+.book-data {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
   gap: 8px;
   margin-bottom: 2px;
 }
@@ -64,6 +71,7 @@
 
 .book-status-controls {
   display: flex;
+  flex-direction: column;
   gap: 8px;
   flex-shrink: 0;
 }
@@ -80,8 +88,8 @@
 
 .book-author {
   display: block;
-  font-size: 0.75rem;
-  color: #7f8c8d;
+  font-size: 0.9rem;
+  color: #5e6464;
   font-style: italic;
 }
 
@@ -113,7 +121,6 @@
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  display: inline-block;
 }
 
 .delete-book-btn:hover {

@@ -98,24 +98,25 @@ function constructBingoBoard() {
       .map(
         (book) => `
   <div class="book-entry" data-book-id="${book.id}">
-    <div class="book-header">
+    <div class="book-data">
       <span class="book-title">${book.title}</span>
-      <div class="book-status-controls">
-        <label>
-          <input type="checkbox" class="read-check" ${book.read ? "checked" : ""}>
-          <span>Read</span>
-        </label>
-        <label>
-          <input type="checkbox" class="hard-mode-check" ${book.hardMode ? "checked" : ""}>
-          <span>HM</span>
-        </label>
-      </div>
+      <span class="book-author">by ${book.author}</span>
     </div>
-    <span class="book-author">by ${book.author}</span>
-    <button class="delete-book-btn" data-book-id="${book.id}" data-square-id="${square.id}">
-      Delete
-    </button>
-  </div>
+    <div class="book-status-controls">
+      <label>
+        <input type="checkbox" class="read-check" ${book.read ? "checked" : ""}>
+        <span>Read</span>
+      </label>
+      <label>
+        <input type="checkbox" class="hard-mode-check" ${book.hardMode ? "checked" : ""}>
+        <span>HM</span>
+      </label>
+    </div>
+    <div>
+      <button class="delete-book-btn" data-book-id="${book.id}" data-square-id="${square.id}">
+        Delete
+      </button>
+    </div>
 `,
       )
       .join("");
