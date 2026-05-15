@@ -73,6 +73,10 @@ function Book(title, author, read, bingoSquareId = null, hardMode = false) {
   this.hardMode = hardMode;
 }
 
+Book.prototype.toggleRead = function () {
+  this.read = !this.read;
+};
+
 function addBookToLibrary(
   title,
   author,
