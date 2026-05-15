@@ -3,6 +3,7 @@ import { bingoSquares } from "./bingo_2026.js";
 const myLibrary = [];
 
 const board = document.querySelector("#bingo-board");
+
 board.addEventListener("change", (event) => {
   const target = event.target;
   const bookEntry = target.closest(".book-entry");
@@ -17,6 +18,14 @@ board.addEventListener("change", (event) => {
   } else if (target.classList.contains("hard-mode-check")) {
     book.hardMode = target.checked;
   }
+});
+
+board.addEventListener("click", (event) => {
+  const addButton = event.target.closest(".add-book-btn");
+  if (!addButton) return;
+
+  const squareId = addButton.getAttribute("data-square-id");
+  console.log(`Add book for square ${squareId}`);
 });
 
 function Book(title, author, read, bingoSquareId = null, hardMode = false) {
