@@ -17,7 +17,7 @@ board.addEventListener("change", (event) => {
   if (!book) return;
 
   if (target.classList.contains("read-check")) {
-    book.read = target.checked;
+    book.toggleRead();
   } else if (target.classList.contains("hard-mode-check")) {
     book.hardMode = target.checked;
   }
