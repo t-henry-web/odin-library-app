@@ -39,8 +39,8 @@ board.addEventListener("click", (event) => {
   if (!deleteButton) return;
 
   const bookId = deleteButton.getAttribute("data-book-id");
-  // console.log("Delete button clicked for book ID:", bookId);
 
+  removeBookFromLibrary(bookId);
   constructBingoBoard();
 });
 
