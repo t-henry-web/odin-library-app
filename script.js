@@ -20,26 +20,7 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(newBook);
 }
 
-function displayBooks() {
-  libraryBody.innerHTML = "";
-  myLibrary.forEach((book) => {
-    const row = document.createElement("tr");
-    row.setAttribute("data-id", book.id);
-
-    const addCell = (text) => {
-      const cell = document.createElement("td");
-      cell.textContent = text;
-      row.appendChild(cell);
-    };
-
-    addCell(book.title);
-    addCell(book.author);
-    addCell(book.pages);
-    addCell(book.read ? "Read" : "Not Read");
-
-    libraryBody.appendChild(row);
-  });
-}
+function displayBooks() {}
 
 function constructBingoBoard() {
   const board = document.querySelector("#bingo-board");
