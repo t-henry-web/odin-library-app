@@ -10,6 +10,29 @@
     <h1 class="page-title">r/Fantasy Bingo 2026</h1>
     <div id="bingo-board" class="grid-container"></div>
 
+    <dialog id="add-book-dialog">
+      <form id="add-book-form" method="dialog">
+        <h2>Add Book for Square <span id="modal-square-id"></span></h2>
+
+        <div class="form-group">
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required />
+        </div>
+
+        <div class="form-group">
+          <label for="author">Author:</label>
+          <input type="text" id="author" name="author" required />
+        </div>
+
+        <input type="hidden" id="target-square-id" name="squareId" />
+
+        <div class="modal-actions">
+          <button type="button" id="cancel-btn">Cancel</button>
+          <button type="submit">Add Book</button>
+        </div>
+      </form>
+    </dialog>
+
     <script type="module" src="script.js"></script>
   </body>
 </html>

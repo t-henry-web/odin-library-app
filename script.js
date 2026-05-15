@@ -25,7 +25,10 @@ board.addEventListener("click", (event) => {
   if (!addButton) return;
 
   const squareId = addButton.getAttribute("data-square-id");
-  console.log(`Add book for square ${squareId}`);
+
+  const dialog = document.getElementById("add-book-dialog");
+  dialog.setAttribute("data-square-id", squareId);
+  dialog.showModal();
 });
 
 function Book(title, author, read, bingoSquareId = null, hardMode = false) {
