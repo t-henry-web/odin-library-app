@@ -1,6 +1,8 @@
 const myLibrary = [];
-const boardState = {}; // map to track which book object belongs to which square ID
+
 const libraryBody = document.querySelector("#library-body");
+
+let bingoSquares = [];
 
 function Book(title, author, pages, read) {
   if (!new.target) {
@@ -26,13 +28,30 @@ function constructBingoBoard() {
   const board = document.querySelector("#bingo-board");
   board.innerHTML = "";
 
-  for (let i = 1; i <= 25; i++) {
-    const square = document.createElement("div");
-    square.classList.add("bingo-card");
-    square.setAttribute("data-id", i);
-    board.appendChild(square);
-  }
+  bingoSquares.forEach((squareData) => {
+    const card = document.createElement("div");
+    card.classList.add("bingo-card");
+
+    // Use the JSON ID as the data-id for future mapping
+    card.setAttribute("data-id", squareData.id);
+
+    card.innerHTML = `
+      <div class="square-number">${squareData.id}</div>
+      <h3 class="square-title">${squareData.category}</h3>
+      <p class="square-desc">${squareData.description}</p>
+    `;
+
+    board.appendChild(card);
+  });
 }
+
+async function init() {
+  const response = await fetch("./bingo_2026.json");
+  bingoSquares = await response.json();
+  constructBingoBoard();
+}
+
+init();
 
 addBookToLibrary("Pilgrim", "Mitchell Luthi", 708, false); // title, author, pages, read
 constructBingoBoard();
