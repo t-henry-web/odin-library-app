@@ -4,7 +4,7 @@ const myLibrary = [];
 
 const libraryBody = document.querySelector("#library-body");
 
-function Book(title, author, pages, read) {
+function Book(title, author, read, bingoSquareId = null, hardMode = false) {
   if (!new.target) {
     throw new Error("Book must be called with the new keyword");
   }
@@ -14,15 +14,23 @@ function Book(title, author, pages, read) {
   // Metadata
   this.title = title;
   this.author = author;
-  this.pages = pages;
+  // Bingo-related properties
+  this.bingoSquareId = bingoSquareId;
+  this.hardMode = hardMode;
 }
 
-function addBookToLibrary(title, author, pages, read) {
-  const newBook = new Book(title, author, pages, read);
+function addBookToLibrary(
+  title,
+  author,
+  read,
+  bingoSquareId = null,
+  hardMode = false,
+) {
+  const newBook = new Book(title, author, read, bingoSquareId, hardMode);
   myLibrary.push(newBook);
 }
 
-function displayBooks() {}
+// function displayBooks() {}
 
 function constructBingoBoard() {
   const board = document.querySelector("#bingo-board");
@@ -37,15 +45,15 @@ function constructBingoBoard() {
 
     card.innerHTML = `
       <div class="square-number"></div>
-      <h3 class="square-title">${square.category}</h3>
+      <h3 class="square-title">${square.id}: ${square.category}</h3>
       <p class="square-desc">${square.description}</p>
-      <p class="square-hardmode"><strong>Hard Mode:</strong> ${square.hardModeDesc}</p>
+      <p class="square-hardmode">Hard Mode: ${square.hardModeDesc}</p>
     `;
 
     board.appendChild(card);
   });
 }
 
-addBookToLibrary("Pilgrim", "Mitchell Luthi", 708, false); // title, author, pages, read
+addBookToLibrary("Pilgrim", "Mitchell Luthi", false, 16, true); // title, author, read, bingoSquareId, hardMode
 constructBingoBoard();
 // displayBooks();
